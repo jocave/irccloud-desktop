@@ -1,0 +1,22 @@
+name: irccloud-desktop
+version: 1
+summary: IRCCloud desktop app
+description: Wraps the IRCCloud website in a native window
+
+apps:
+  irccloud:
+    command: irccloud-wrapper
+    plugs: [unity7, opengl, network]
+
+parts:
+  irccloud:
+    plugin: nodejs
+    source: .
+    source-subdir: app
+    node-packages:
+      - electron
+      - tray
+  wrappers:
+    plugin: copy
+    files:
+      irccloud-wrapper: bin/irccloud-wrapper
